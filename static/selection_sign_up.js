@@ -267,12 +267,12 @@ function remove_favorite() {
 function expand_description() {
     const tr = $(this).closest('tr');
     const desc = tr.find('.desc-full');
-    if(desc[0].getAnimations().filter(animation => animation.playState && animation.playState == "running").length > 0) return;
-    if(desc.hasClass("enabled")) {
-        desc.addClass("disabling");
+    if(desc.find('.col')[0].getAnimations().some(animation => animation.playState === "running")) return;
+    if(desc.hasClass('enabled')) {
+        desc.addClass('disabling');
         setTimeout(() => {desc.removeClass("disabling"); desc.removeClass("enabled")}, 400);
     }
-    else desc.addClass("enabled");
+    else desc.addClass('enabled');
 }
 
 $(document).ready(function () {
