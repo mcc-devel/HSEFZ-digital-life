@@ -165,7 +165,9 @@ def convert_selection_data_to_html(data):
         <td>
             <div class='desc-full'>
                 <div class='col'>
-                    %s
+                    <div class='inner'>
+                        %s
+                    </div>
                 </div>
                 %s
             </div>

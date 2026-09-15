@@ -4,7 +4,7 @@ const row_content = "<tr>" +
     "<td class='op-content'>{0}</td>" +      // ← 收藏按钮列
     "<td class='status-content'>{1}</td>" +
     "<td class='name-content'>{2}</td>" +
-    "<td><div class='desc-full'><div class='col'>{3}</div>{4}</div></td>" +
+    "<td><div class='desc-full'><div class='col'><div class='inner'>{3}</div></div>{4}</div></td>" +
     "{5}" +                                       // 类型列
     "<td class='cnum-content'>{6}</td>" +
     "<td class='rnum-content'>{7}</td>" +
@@ -82,7 +82,7 @@ function convert_form_data_to_json(data) {
             <td class="op-content">${favorite_content}</td>
             <td class="status-content">${logo}</td>
             <td class="name-content">${name}</td>
-            <td><div class="desc-full"><div class="col">${desc}</div>${full_desc_button}</div></td>
+            <td><div class="desc-full"><div class="col"><div class="inner">${desc}</div></div>${full_desc_button}</div></td>
             ${type_div}
             <td class="cnum-content">${cnum}</td>
             <td class="rnum-content">${rnum}</td>
@@ -104,6 +104,7 @@ function refresh(data) {
     $('.sign-up').on('click', register);
     $('.cancel-sign-up').on('click', cancel_register);
     $('.btn-full-desc').on('click', jump_desc);
+    $('#sign-up-table-tbody tr > td:not(.op-content):not(:has(.desc-full)), #sign-up-table-tbody tr div.desc-full > :not(a)').on('click', expand_description);
 }
 
 // function refresh(data) {
@@ -263,6 +264,16 @@ function remove_favorite() {
     });
 }
 
+function expand_description() {
+    const tr = $(this).closest('tr');
+    const desc = tr.find('.desc-full');
+    if(desc[0].getAnimations().filter(animation => animation.playState && animation.playState == "running").length > 0) return;
+    if(desc.hasClass("enabled")) {
+        desc.addClass("disabling");
+        setTimeout(() => {desc.removeClass("disabling"); desc.removeClass("enabled")}, 400);
+    }
+    else desc.addClass("enabled");
+}
 
 $(document).ready(function () {
     $('.sign-up').on('click', register);
@@ -271,4 +282,5 @@ $(document).ready(function () {
     $('.refresh-button').on('click', manual_refresh);
     $('.add-favorite').on('click', add_favorite);
     $('.cancel-favorite').on('click', remove_favorite);
+    $('#sign-up-table-tbody tr > td:not(.op-content):not(:has(.desc-full)), #sign-up-table-tbody tr div.desc-full > :not(a)').on('click', expand_description);
 });
