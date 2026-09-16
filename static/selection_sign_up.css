@@ -179,6 +179,7 @@
 .desc-full{
     display: flex;
     flex-direction: row;
+    /* align-items: stretch; */
 }
 
 .refresh-button{
@@ -196,6 +197,17 @@
     width: 3.1rem;
     padding: 0;
     margin-top: -0.1rem;
+}
+
+td:has(.desc-full){
+    position: relative;
+}
+
+.desc-full:not(.enabled, .disabling){
+    left: 12px;
+    top: 12px;
+    position: absolute;
+    min-height: calc(100% - 24px)
 }
 
 .desc-full .col{
@@ -219,7 +231,7 @@
 }
 
 .desc-full .col .inner{
-    min-height: 1.2em;
+    min-height: 1.5em;
     overflow: hidden;
     text-overflow: ellipsis;
 }
