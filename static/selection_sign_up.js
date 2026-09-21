@@ -66,7 +66,7 @@ function convert_form_data_to_json(data) {
             op_content = "<button class='btn btn-danger id='{0}' disabled>未开始</button>".format(class_id);
         }
         if (c['full_desc']) {
-            full_desc_button = "<a href='{0}'>详情</a>".format(c['link']);
+            full_desc_button = "<a href='{0}' target='_blank'>详情</a>".format(c['link']);
         }
 
         if (c['is_favorite'] == 1) {
