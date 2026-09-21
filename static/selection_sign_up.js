@@ -104,7 +104,7 @@ function refresh(data) {
     $('.sign-up').on('click', register);
     $('.cancel-sign-up').on('click', cancel_register);
     $('.btn-full-desc').on('click', jump_desc);
-    $('#sign-up-table-tbody tr > td:not(.op-content):not(:has(.desc-full)), #sign-up-table-tbody tr div.desc-full > :not(a)').on('click', expand_description);
+    $('#sign-up-table-tbody *').on('click', expand_description);
 }
 
 // function refresh(data) {
@@ -264,8 +264,9 @@ function remove_favorite() {
     });
 }
 
-function expand_description() {
-    const tr = $(this).closest('tr');
+function expand_description(event) {
+    if($(event.target).closest('a').length || $(event.target).closest('button').length) return;
+    const tr = $(event.target).closest('tr');
     const desc = tr.find('.desc-full');
     if(desc.find('.col')[0].getAnimations().some(animation => animation.playState === "running")) return;
     if(desc.hasClass('enabled')) {
@@ -282,5 +283,5 @@ $(document).ready(function () {
     $('.refresh-button').on('click', manual_refresh);
     $('.add-favorite').on('click', add_favorite);
     $('.cancel-favorite').on('click', remove_favorite);
-    $('#sign-up-table-tbody tr > td:not(.op-content):not(:has(.desc-full)), #sign-up-table-tbody tr div.desc-full > :not(a)').on('click', expand_description);
+    $('#sign-up-table-tbody *').on('click', expand_description);
 });
