@@ -260,7 +260,7 @@ def convert_selection_data_to_html(data):
         full_desc_button = ''
         
         if c['full_desc']:
-            full_desc_button = "<a href='%s'>详情</a>" % (c['link'])
+            full_desc_button = "<a href='%s' target='_blank'>详情</a>" % (c['link'])
 
         if c['is_favorite'] == 1:
             favorite_content = "<button class='btn favorite-btn-cancel cancel-favorite' id='%s'>取消收藏</button>" % (
