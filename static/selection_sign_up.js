@@ -104,7 +104,7 @@ function refresh(data) {
     $('.sign-up').on('click', register);
     $('.cancel-sign-up').on('click', cancel_register);
     $('.btn-full-desc').on('click', jump_desc);
-    $('#sign-up-table-tbody *').on('click', expand_description);
+    $('#sign-up-table-tbody').on('click', expand_description);
 }
 
 // function refresh(data) {
@@ -283,5 +283,5 @@ $(document).ready(function () {
     $('.refresh-button').on('click', manual_refresh);
     $('.add-favorite').on('click', add_favorite);
     $('.cancel-favorite').on('click', remove_favorite);
-    $('#sign-up-table-tbody *').on('click', expand_description);
+    $('#sign-up-table-tbody').on('click', expand_description);
 });
