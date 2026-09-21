@@ -179,7 +179,6 @@
 .desc-full{
     display: flex;
     flex-direction: row;
-    /* align-items: stretch; */
 }
 
 .refresh-button{
@@ -220,6 +219,10 @@ td:has(.desc-full){
     transition: grid-template-rows 400ms ease-out;
     grid-template-rows: 0fr;
     display: grid;
+}
+
+.desc-full a {
+    height: min-content;
 }
 
 .desc-full.enabled .col{
