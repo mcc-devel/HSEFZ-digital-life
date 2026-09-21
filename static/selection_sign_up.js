@@ -104,7 +104,7 @@ function refresh(data) {
     $('.sign-up').on('click', register);
     $('.cancel-sign-up').on('click', cancel_register);
     $('.btn-full-desc').on('click', jump_desc);
-    $('#sign-up-table-tbody').on('click', expand_description);
+    // delegated description handler is registered once in $(document).ready
 }
 
 // function refresh(data) {
